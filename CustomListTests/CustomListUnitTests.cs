@@ -109,6 +109,7 @@ namespace CustomListTests
         {
             //Arrange 
 
+            
             CustomList<int> TestList = new CustomList<int>();
             int ExpectedCapcity = 8;
             int actual;
