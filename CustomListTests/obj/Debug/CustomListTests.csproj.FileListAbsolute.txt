@@ -1,0 +1,2 @@
+C:\Users\Patrick\Desktop\Coding Class Contents\CustomListUnitTestStarter\CustomListTests\obj\Debug\CustomListTests.csprojAssemblyReference.cache
+C:\Users\Patrick\Desktop\Coding Class Contents\CustomListUnitTestStarter\CustomListTests\obj\Debug\CustomListTests.csproj.CoreCompileInputs.cache
