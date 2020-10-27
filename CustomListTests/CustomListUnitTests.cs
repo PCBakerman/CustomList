@@ -2,12 +2,14 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CustomListUnitTestStarter;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using System.Threading;
 
 namespace CustomListTests
 {
     [TestClass]
     public class CustomListUnitTests
-    {
+    { 
         [TestMethod]
         public void Add_AddItemToEmptyList_ItemGoesToIndexZero()
         {
@@ -29,6 +31,7 @@ namespace CustomListTests
         public void Add_AddItemToEmptyList_CountIncrementsToOne()
         {
             // Arrange
+           
             CustomList<int> testList = new CustomList<int>();
             int item = 10;
             int expected = 1;
@@ -44,7 +47,7 @@ namespace CustomListTests
         [TestMethod]
         public void Add_AddItem_IndexZeroRemainsUnchanged()
         {
-            List<int> testList = new List<int>();
+            CustomList<int> testList = new CustomList<int>();
             int firstItem = 3;
             int item = 10;
             int expected = 3;
@@ -104,10 +107,11 @@ namespace CustomListTests
             CustomList<int> TestList = new CustomList<int>();
             int ExpectedCapcity = 8;
             int actual;
-
+            
 
             //Act
 
+            TestList.Add(0);
             TestList.Add(0);
             TestList.Add(0);
             TestList.Add(0);
@@ -119,11 +123,5 @@ namespace CustomListTests
 
 
         }
-
-        // what if i .Add to a list that has a couple things in it already (position of item)?
-        // what if i .Add to a list that has a couple things in it already (value of Count)?
-        // how does the Capacity change as you add things? (starts at 4, and doubles)
-
-        // REMOVE TESTS:
     }
 }
