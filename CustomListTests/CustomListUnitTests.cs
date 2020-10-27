@@ -7,6 +7,7 @@ using System.Threading;
 
 namespace CustomListTests
 {
+    //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
     [TestClass]
     public class CustomListUnitTests
     { 
@@ -44,8 +45,9 @@ namespace CustomListTests
             // Assert
             Assert.AreEqual(expected, actual);
         }
+        //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
         [TestMethod]
-        public void Add_AddItem_IndexZeroRemainsUnchanged()
+        public void Add_AddTwoItem_IndexZeroRemainsUnchanged()
         {
             CustomList<int> testList = new CustomList<int>();
             int firstItem = 3;
@@ -64,8 +66,9 @@ namespace CustomListTests
 
 
         }
+        //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
         [TestMethod]
-        public void AddMultipulToListAndCountItems()
+        public void Add_AddSeveralItems_CountEqualsNumbersOfItemsAdded()
         {
             //Arrange
             Random random = new Random();
@@ -86,8 +89,9 @@ namespace CustomListTests
             Assert.AreEqual(actual, ExpectedCount);
 
         }
+        //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
         [TestMethod]
-        public void CapacityStartsAtFour()
+        public void Constructor_InitalizeList_CapacityStartsAtFour()
         {   
             //Arrange 
             CustomList<int> TestList = new CustomList<int>();
@@ -99,8 +103,9 @@ namespace CustomListTests
             //Assert
             Assert.AreEqual(actual, ExpectedCapcity);
         }
+        //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
         [TestMethod] 
-        public void CapacityDoublesWhenReached()
+        public void Add_AddFourItems_CapacityDoublesWhenReached()
         {
             //Arrange 
 
@@ -115,13 +120,61 @@ namespace CustomListTests
             TestList.Add(0);
             TestList.Add(0);
             TestList.Add(0);
-            TestList.Add(0);
             actual = TestList.Capacity;
 
             //Assert
             Assert.AreEqual(actual, ExpectedCapcity);
 
+            //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
+        }
+        [TestMethod]
+        public void Add_AddFiveItems_FifthItemAtFourthIndex()
+        {
+            //Arrange 
+
+            CustomList<int> TestList = new CustomList<int>();
+            int FifthItem = 7;
+            int actual;
+
+
+            //Act
+
+            TestList.Add(0);
+            TestList.Add(0);
+            TestList.Add(0);
+            TestList.Add(0);
+            TestList.Add(FifthItem);
+            actual = TestList[4]; 
+
+            //Assert
+            Assert.AreEqual(actual, FifthItem);
+
 
         }
+        [TestMethod]
+        public void Add_AddFiveItems_ThirdItemAtSecondIndex()
+        {
+            //Arrange 
+
+            CustomList<int> TestList = new CustomList<int>();
+            int thirdItem = 7;
+            int actual;
+
+
+            //Act
+
+            TestList.Add(0);
+            TestList.Add(0);
+            TestList.Add(thirdItem);
+            TestList.Add(0);
+            TestList.Add(0);
+            actual = TestList[2];
+
+            //Assert
+            Assert.AreEqual(actual, thirdItem);
+
+
+        }
+
     }
 }
