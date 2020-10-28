@@ -22,7 +22,7 @@ namespace CustomListTests
 
             // Act
             testList.Add(item);
-            actual = testList[0]; // error expected until "indexer property" is added to class
+            actual = testList[0]; 
 
             // Assert
             Assert.AreEqual(expected, actual);
@@ -32,7 +32,6 @@ namespace CustomListTests
         public void Add_AddItemToEmptyList_CountIncrementsToOne()
         {
             // Arrange
-
             CustomList<int> testList = new CustomList<int>();
             int item = 10;
             int expected = 1;
@@ -40,7 +39,7 @@ namespace CustomListTests
 
             // Act
             testList.Add(item);
-            actual = testList.Count; // error expected until "Count" is added to class
+            actual = testList.Count; 
 
             // Assert
             Assert.AreEqual(expected, actual);
@@ -58,7 +57,7 @@ namespace CustomListTests
             // Act
             testList.Add(firstItem);
             testList.Add(item);
-            actual = testList[0]; // error expected until "Count" is added to class
+            actual = testList[0]; 
             // Assert
             Assert.AreEqual(expected, actual);
 
@@ -89,7 +88,7 @@ namespace CustomListTests
             Assert.AreEqual(actual, ExpectedCount);
 
         }
-        //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
+                            //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
         [TestMethod]
         public void Constructor_InitalizeList_CapacityStartsAtFour()
         {
@@ -103,46 +102,37 @@ namespace CustomListTests
             //Assert
             Assert.AreEqual(actual, ExpectedCapcity);
         }
-        //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
+                            //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
         [TestMethod]
         public void Add_AddFourItems_CapacityDoublesWhenReached()
         {
             //Arrange 
-
             CustomList<int> TestList = new CustomList<int>();
             int ExpectedCapcity = 8;
             int actual;
 
-
             //Act
-
             TestList.Add(1);
             TestList.Add(2);
             TestList.Add(3);
             TestList.Add(4);
-
-
-
             actual = TestList.Capacity;
 
             //Assert
-
             Assert.AreEqual(actual, ExpectedCapcity);
 
-            //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
+                            //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
         }
         [TestMethod]
         public void Add_AddFiveItems_FifthItemAtFourthIndex()
         {
             //Arrange 
-
             CustomList<int> TestList = new CustomList<int>();
             int FifthItem = 7;
             int actual;
 
 
             //Act
-
             TestList.Add(0);
             TestList.Add(0);
             TestList.Add(0);
@@ -153,20 +143,18 @@ namespace CustomListTests
             //Assert
             Assert.AreEqual(actual, FifthItem);
 
-            //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
-        }
+            
+        }                       //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
         [TestMethod]
         public void Add_AddFiveItems_ThirdItemAtSecondIndex()
         {
-            //Arrange 
-
+            //Arrange
             CustomList<int> TestList = new CustomList<int>();
             int thirdItem = 7;
             int actual;
 
 
             //Act
-
             TestList.Add(0);
             TestList.Add(0);
             TestList.Add(thirdItem);
@@ -184,19 +172,17 @@ namespace CustomListTests
 
 
 
-            //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
+                        //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
         }
         [TestMethod]
         public void Remove_RemoveOneItemFromList_CountGoesDownByOne()
         {
             //Arrange 
-
             CustomList<int> TestList = new CustomList<int>();
             int expected = 3;
             int actual;
 
             //Act
-
             TestList.Add(1);
             TestList.Add(2);
             TestList.Add(3);
@@ -206,11 +192,10 @@ namespace CustomListTests
             actual = TestList.Count;
 
             //Assert
-
             Assert.AreEqual(actual, expected);
 
 
-            //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
+                        //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
         }
         [TestMethod]
         public void Remove_RemoveDuplicateValue_OnlyRemoveFirstValueOfDuplicate()
@@ -234,6 +219,7 @@ namespace CustomListTests
             Assert.AreEqual(actual, expected);
 
         }
+                        //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
         [TestMethod]
         public void Remove_RemoveFirstItem_HasItemTwoReplacedItemOne()
         {
@@ -243,19 +229,60 @@ namespace CustomListTests
             int actual;
 
             //Act
-            customList.Add(1); //index 0
+            customList.Add(1);         //index 0
             customList.Add(expected); //index 1
-            customList.Add(3); //index 2
+            customList.Add(3);       //index 2
             customList.Remove(1);
             customList.Add(expected);
             actual = customList[0]; 
 
+            //Assert
+            Assert.AreEqual(actual, expected);
+                
+        }
+                            //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
+        [TestMethod]
+        public void Remove_RemoveNonexsistentItem_CountStaysTheSame()
+        {//Arrange
+        CustomList <int> customList = new CustomList<int>();
+            int expected = 3;
+            int actual;
+
+        //Act
+            customList.Add(100); //index 0
+            customList.Add(200); //index 1
+            customList.Add(300); //index 2
+            customList.Remove(400); //index 3
+            actual = customList.Count;
 
             //Assert
-
             Assert.AreEqual(actual, expected);
-
         }
+                            //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
+        [TestMethod]
+        public void Remove_RemoveNonexsistentItem_ValuesStaysTheSame()
+        {//Arrange
+            CustomList<int> customList = new CustomList<int>();
+            int expected1 = 100;
+            int expected2 = 200;
+            int expected3 = 300;
+            int actual1;
+            int actual2;
+            int actual3;
 
+            //Act
+            customList.Add(100); //index 0
+            customList.Add(200); //index 1
+            customList.Add(300); //index 2
+            customList.Remove(400); //index 3
+            actual1 = customList[0];
+            actual2 = customList[1];
+            actual3 = customList[2];
+
+            //Assert
+            Assert.AreEqual(actual1, expected1);
+            Assert.AreEqual(actual2, expected2);
+            Assert.AreEqual(actual3, expected3);
+        }
     }
 }
