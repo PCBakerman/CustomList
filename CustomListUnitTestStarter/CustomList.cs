@@ -54,20 +54,47 @@ namespace CustomListUnitTestStarter
 
 
         }
+        
+
+        /// <summary>
+        /// <paramref name="item"/>
+        /// Removes an item
+        /// Removes only 1st instances of passing item
+        /// Does nothing if item doesn't exsist
+        /// If an item removed decrease count by -1 $$
+        /// If an item is removed, shift all other items down one
+        /// </summary>
         public void Remove(T item)
         {
-            // Check if we need to expand the array.
-            if (Count - 1 >= Capacity)
+            bool SomethingHasBeenRemoved = false;
+           
+            T[] tempArray = new T[Capacity]; // Creating a new array, adding onto the capacity.
+            
+            for (int i = 0; i < items.Length; i++) // Loop to copy items into the replacement array.
             {
-                T[] tempArray = new T[Capacity * 2]; // Creating a new array, adding onto the capacity.
-                for (int i = 0; i < items.Length; i--) // Loop to copy items into the replacement array.
+                
+                if (EqualityComparer<T>.Default.Equals(item, items[i]))
                 {
-                    tempArray[i] = items[i];
+                    if (SomethingHasBeenRemoved)
+                    {
+                        tempArray[i] = items[i];
+                    }
+                    else
+                    {
+                          SomethingHasBeenRemoved = true;  
+                    }
                 }
-                items = tempArray; // Replacing the old array with the new array.
+                else
+                {
+                    tempArray[i] = items[i];  
+                }
             }
-            items[Count] = item; // Set item into items array at the count index.
-            Count--;  // Remove one to the count.
+            items = tempArray; // Replacing the old array with the new array.
+           
+            if (SomethingHasBeenRemoved)
+            {
+                 Count--;  
+            }
         }
     }
 }

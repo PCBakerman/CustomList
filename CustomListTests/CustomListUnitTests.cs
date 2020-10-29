@@ -116,6 +116,7 @@ namespace CustomListTests
             TestList.Add(2);
             TestList.Add(3);
             TestList.Add(4);
+            TestList.Add(4);
             actual = TestList.Capacity;
 
             //Assert
@@ -187,7 +188,6 @@ namespace CustomListTests
             TestList.Add(2);
             TestList.Add(3);
             TestList.Add(4);
-            expected = TestList.Count - 1;
             TestList.Remove(3);
             actual = TestList.Count;
 
@@ -203,7 +203,7 @@ namespace CustomListTests
             //Arrange 
             CustomList<int> TestList = new CustomList<int>();
             int duplicateItem1 = 3;
-            int expected = 3;
+            int expected = 30;
             int actual;
 
             //Act
