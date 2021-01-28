@@ -333,11 +333,8 @@ namespace CustomListTests
             //Assert
             Assert.AreEqual(actual, expected);
         }
-        #endregion 
-        //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
-
-       
-
+        #endregion
+        #region ToStringMethods
         [TestMethod]
         public void ToString_OneItemInList_ReturnsStringOfOneItem()
         {
@@ -409,7 +406,246 @@ namespace CustomListTests
             Assert.AreEqual(actual, ExpectedResult);
 
         }
+        #endregion ToStringMethods
+        #region OperatorMethodTests
+        [TestMethod]
+        public void AddOperator_ListsWithContent_CountEqualsSumOfBothLists()
+        {
+            //Arrange 
+            CustomList<int> FirstList = new CustomList<int>();
+            CustomList<int> SecondList = new CustomList<int>();
+            int ExpectedCount = 5;
+            int actual;
 
-    } 
-  
+            //Act
+            FirstList.Add(1);
+            FirstList.Add(2);
+            FirstList.Add(3);
+            SecondList.Add(4);
+            SecondList.Add(4);
+            var resultlist = FirstList + SecondList;
+            actual = resultlist.Count;
+
+            //Assert
+            Assert.AreEqual(actual, ExpectedCount);
+
+        }
+        [TestMethod]
+        public void AddOperator_ListsWithContent_ListOrderHasBeenRetained()
+        {
+            //Arrange 
+            CustomList<int> FirstList = new CustomList<int>();
+            CustomList<int> SecondList = new CustomList<int>();
+            int Expected = 3;
+            int actual;
+
+            //Act
+            FirstList.Add(1);
+            FirstList.Add(2);
+            FirstList.Add(3);
+            SecondList.Add(4);
+            SecondList.Add(4);
+            var resultlist = FirstList + SecondList;
+            actual = resultlist[2];
+
+            //Assert
+            Assert.AreEqual(actual, Expected);
+
+        }
+
+        [TestMethod]
+        public void AddOperator_ListsWithContent_OriginalListsUnchanged()
+        {
+            //Arrange 
+            CustomList<int> FirstList = new CustomList<int>();
+            CustomList<int> SecondList = new CustomList<int>();
+           
+
+            //Act
+            FirstList.Add(1);
+            FirstList.Add(2);
+            FirstList.Add(3);
+            SecondList.Add(4);
+            SecondList.Add(4);
+            var resultlist = FirstList + SecondList;
+           
+
+            //Assert
+            Assert.AreEqual(FirstList[0], 1);
+            Assert.AreEqual(FirstList[1], 2);
+            Assert.AreEqual(FirstList[2], 3);
+            Assert.AreEqual(SecondList[1], 4);
+            Assert.AreEqual(SecondList[0], 4);
+        }
+
+        [TestMethod]
+        public void AddOperator_AddEmptyList_ResultsIsListWithContents()
+        {
+            //Arrange 
+            CustomList<int> FirstList = new CustomList<int>();
+            CustomList<int> SecondList = new CustomList<int>();
+           
+
+            //Act
+            FirstList.Add(1);
+            FirstList.Add(2);
+            FirstList.Add(3);
+            var resultlist = FirstList + SecondList;
+            
+            //Assert
+            Assert.AreEqual(FirstList[0], resultlist[0]);
+            Assert.AreEqual(FirstList[1], resultlist[1]);
+            Assert.AreEqual(FirstList[2], resultlist[2]);
+        }
+
+        [TestMethod]
+        public void AddOperator_AddEmptyLists_ResultsIsEmptyList()
+        {
+            //Arrange 
+            CustomList<int> FirstList = new CustomList<int>();
+            CustomList<int> SecondList = new CustomList<int>();
+            int Expected = 0;
+            int actual;
+
+
+            //Act
+            var resultlist = FirstList + SecondList;
+            actual = resultlist.Count;
+
+            //Assert
+            Assert.AreEqual(actual, Expected);
+        }
+        [TestMethod]
+        public void SubtractOperator_ListsWithContent_CountUpdatedToRemovedItems()
+        {
+            //Arrange 
+            CustomList<int> FirstList = new CustomList<int>();
+            CustomList<int> SecondList = new CustomList<int>();
+            int ExpectedCount = 2;
+            int actual;
+
+            //Act
+            FirstList.Add(1);
+            FirstList.Add(2);
+            FirstList.Add(3);
+            SecondList.Add(3);
+            SecondList.Add(4);
+            var resultlist = FirstList - SecondList;
+            actual = resultlist.Count;
+
+            //Assert
+            Assert.AreEqual(actual, ExpectedCount);
+
+        }
+        [TestMethod]
+        public void SubtractOperator_ListsWithContent_ListOrderHasBeenRetained()
+        {
+            //Arrange 
+            CustomList<int> FirstList = new CustomList<int>();
+            CustomList<int> SecondList = new CustomList<int>();
+            int Expected = 2;
+            int actual;
+
+            //Act
+            FirstList.Add(1);
+            FirstList.Add(2);
+            FirstList.Add(3);
+            SecondList.Add(3);
+            SecondList.Add(4);
+            var resultlist = FirstList - SecondList;
+            actual = resultlist[1];
+
+            //Assert
+            Assert.AreEqual(actual, Expected);
+
+        }
+
+        [TestMethod]
+        public void SubtractOperator_ListsWithContent_OriginalListsUnchanged()
+        {
+            //Arrange 
+            CustomList<int> FirstList = new CustomList<int>();
+            CustomList<int> SecondList = new CustomList<int>();
+
+
+            //Act
+            FirstList.Add(1);
+            FirstList.Add(2);
+            FirstList.Add(3);
+            SecondList.Add(3);
+            SecondList.Add(4);
+            var resultlist = FirstList - SecondList;
+
+
+            //Assert
+            Assert.AreEqual(FirstList[0], 1);
+            Assert.AreEqual(FirstList[1], 2);
+            Assert.AreEqual(FirstList[2], 3);
+            Assert.AreEqual(SecondList[1], 4);
+            Assert.AreEqual(SecondList[0], 3);
+        }
+
+        [TestMethod]
+        public void SubtractOperator_SubtractEmptyList_ResultsIsUnchanged()
+        {
+            //Arrange 
+            CustomList<int> FirstList = new CustomList<int>();
+            CustomList<int> SecondList = new CustomList<int>();
+
+
+            //Act
+            FirstList.Add(1);
+            FirstList.Add(2);
+            FirstList.Add(3);
+            var resultlist = FirstList - SecondList;
+
+            //Assert
+            Assert.AreEqual(FirstList[0], resultlist[0]);
+            Assert.AreEqual(FirstList[1], resultlist[1]);
+            Assert.AreEqual(FirstList[2], resultlist[2]);
+        }
+        
+        [TestMethod]
+        public void SubtractOperator_SubtractEmptyLists_ResultsIsEmptyList()
+        {
+            //Arrange 
+            CustomList<int> FirstList = new CustomList<int>();
+            CustomList<int> SecondList = new CustomList<int>();
+            int Expected = 0;
+            int actual;
+
+
+            //Act
+            var resultlist = FirstList - SecondList;
+            actual = resultlist.Count;
+
+            //Assert
+            Assert.AreEqual(actual, Expected);
+        }
+
+        [TestMethod]
+        public void SubtractOperator_ListsWithDuplicates_OnlyFirstItemIsRemoved()
+        {
+            //Arrange 
+            CustomList<int> FirstList = new CustomList<int>();
+            CustomList<int> SecondList = new CustomList<int>();
+            int Expected = 2;
+            int actual;
+
+            //Act
+            FirstList.Add(1);
+            FirstList.Add(3);
+            FirstList.Add(3);
+            SecondList.Add(3);
+            SecondList.Add(4);
+            var resultlist = FirstList - SecondList;
+            actual = resultlist.Count;
+
+            //Assert
+            Assert.AreEqual(actual, Expected);
+
+        }
+        #endregion 
+    }
+
 }
