@@ -15,19 +15,21 @@ namespace CustomListUnitTestStarter
 
         // Indexer with only a get accessors with the expression-bodied definition:(From https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/indexers/using-indexers)
         public T this[int index] => FindItemByIndex(index);
-        public int Capacity { get { return items.Length; } }
+        public int Capacity { get; set; }
         public int Count { get; private set; }
         public CustomList()
         {
+            Capacity = 4;
             Count = 0;
-            items = new T[4];
+            items = new T[Capacity];
         }
         public void Add(T item) 
         {
             // Check if we need to expand the array.
             if (Count + 1 >= Capacity) 
             {
-                T[] tempArray = new T[Capacity * 2]; // Creating a new array, adding onto the capacity.
+                Capacity = Capacity * 2;
+                T[] tempArray = new T[Capacity]; // Creating a new array, adding onto the capacity.
                 for (int i = 0; i < items.Length; i++) // Loop to copy items into the replacement array.
                 {
                     tempArray[i] = items[i];

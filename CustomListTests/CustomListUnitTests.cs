@@ -198,7 +198,7 @@ namespace CustomListTests
             //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
         }
         #endregion
-        #region removemethodtests
+        #region RemoveMethodTests
         [TestMethod]
         public void Remove_RemoveOneItemFromList_CountGoesDownByOne()
         {
@@ -769,15 +769,39 @@ namespace CustomListTests
             TestList.Add(1);
             TestList.Add(2);
             TestList.Add(3);
-            foreach (var item in TestList) ;
+            foreach (var item in TestList)
+            {
+                Expected++; 
+            }
 
             //Assert
-            Assert.AreEqual(actual, ExpectedResult);
+            Assert.AreEqual(Expected, TestList.Count);
 
         }
+        [TestMethod]
+        public void Iteration_IterateOverItems_IteratingCanSucsessfullyCopyList()
+        {
+            //Arrange 
+            CustomList<int> TestList = new CustomList<int>();
+            CustomList<int> CopyList = new CustomList<int>();
+            
 
+            //Act
+            TestList.Add(1);
+            TestList.Add(2);
+            TestList.Add(3);
+            foreach (var item in TestList)
+            {
+                CopyList.Add(item);
+            }
 
-
+            //Assert
+            Assert.AreEqual(TestList[0], CopyList[0]);
+            Assert.AreEqual(TestList[1], CopyList[1]);
+            Assert.AreEqual(TestList[2], CopyList[2]);
+           
+        }
+        #endregion
     }
 
 }
