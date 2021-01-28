@@ -11,7 +11,7 @@ namespace CustomListTests
     [TestClass]
     public class CustomListUnitTests
     {
-        #region addmethodtests
+        #region AddMethodTests
         [TestMethod]
         public void Add_AddFourStrings_CapacityDoublesWhenReached()
         {
@@ -757,6 +757,26 @@ namespace CustomListTests
             Assert.AreEqual(Expected, actual);
         }
         #endregion
+        #region IterationTests
+        [TestMethod]
+        public void Iteration_IterateOverItems_IteratesNumberOfTimesEqualToCount()
+        {
+            //Arrange 
+            CustomList<int> TestList = new CustomList<int>();
+            int Expected = 0;
+
+            //Act
+            TestList.Add(1);
+            TestList.Add(2);
+            TestList.Add(3);
+            foreach (var item in TestList) ;
+
+            //Assert
+            Assert.AreEqual(actual, ExpectedResult);
+
+        }
+
+
 
     }
 
