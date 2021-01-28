@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CustomListUnitTestStarter
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable
     {
 
         private T[] items;
@@ -129,6 +130,37 @@ namespace CustomListUnitTestStarter
             return result;
 
         }
+
+        public CustomList<T> Zip(CustomList<T> customList) 
+        {
+            if(customList == null)
+            {
+                throw new ArgumentNullException();
+            }
+            var result = new CustomList<T>();
+            var max = Count >= customList.Count ? Count : customList.Count;
+            for (var i = 0; i < max; i++)
+            {
+                result.Add(items[i]);
+                if(i < customList.Count)
+                {
+                    result.Add(customList[i]);
+                }
+            }
+            return result;
+     
+        }
+        
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return (IEnumerator)GetEnumerator();
+        }
+
+        public CustomListEnumerator<T> GetEnumerator()
+        {
+            return new CustomListEnumerator<T> (items, Count);
+        } 
     }
 }
+
 
