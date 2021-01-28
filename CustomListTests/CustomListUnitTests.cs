@@ -803,8 +803,6 @@ namespace CustomListTests
         }
         #endregion
 
-
-
     }
 
 }

@@ -23,10 +23,10 @@ namespace CustomListUnitTestStarter
             Count = 0;
             items = new T[Capacity];
         }
-        public void Add(T item) 
+        public void Add(T item)
         {
             // Check if we need to expand the array.
-            if (Count + 1 >= Capacity) 
+            if (Count + 1 >= Capacity)
             {
                 Capacity = Capacity * 2;
                 T[] tempArray = new T[Capacity]; // Creating a new array, adding onto the capacity.
@@ -39,10 +39,10 @@ namespace CustomListUnitTestStarter
             items[Count] = item; // Set item into items array at the count index.
             Count++;  // Add one to the count
         }
-      
+
         private T FindItemByIndex(int index)
         {
-            
+
             // Check if index is within our array.
             if (index < 0 || index >= Count)
             {
@@ -51,31 +51,21 @@ namespace CustomListUnitTestStarter
                  $"Index out of range.");
 
             }
-             //Return item at index.
-             return items[index];
-            
+            //Return item at index.
+            return items[index];
+
 
 
         }
-        
-
-        /// <summary>
-        /// <paramref name="item"/>
-        /// Removes an item
-        /// Removes only 1st instances of passing item
-        /// Does nothing if item doesn't exist
-        /// If an item removed decrease count by -1 $$
-        /// If an item is removed, shift all other items down one
-        /// </summary>
         public void Remove(T item)
         {
             bool SomethingHasBeenRemoved = false;
-           
+
             T[] tempArray = new T[Capacity]; // Creating a new array, adding onto the capacity.
-            
+
             for (int i = 0; i < items.Length; i++) // Loop to copy items into the replacement array.
             {
-                
+
                 if (EqualityComparer<T>.Default.Equals(item, items[i]))
                 {
                     if (SomethingHasBeenRemoved)
@@ -84,19 +74,19 @@ namespace CustomListUnitTestStarter
                     }
                     else
                     {
-                          SomethingHasBeenRemoved = true;  
+                        SomethingHasBeenRemoved = true;
                     }
                 }
                 else
                 {
-                    tempArray[i] = items[i];  
+                    tempArray[i] = items[i];
                 }
             }
             items = tempArray; // Replacing the old array with the new array.
-           
+
             if (SomethingHasBeenRemoved)
             {
-                 Count--;  
+                Count--;
             }
         }
         public override string ToString()
@@ -104,9 +94,41 @@ namespace CustomListUnitTestStarter
             var result = string.Empty;
             for (var i = 0; i < Count; i++)
             {
-               result += items[i].ToString();
+                result += items[i].ToString();
             }
             return result;
         }
+        public static CustomList<T> operator +(CustomList<T> a, CustomList<T> b)
+        {
+            var result = new CustomList<T>();
+            if (a == null || b == null)
+            {
+                throw new ArgumentNullException();
+            }
+            for (var i = 0; i < a.Count; i++)
+            {
+                result.Add(a[i]);
+            }
+            for (var i = 0; i < b.Count; i++)
+            {
+                result.Add(b[i]);
+            }
+            return result;
+        }
+        public static CustomList<T> operator -(CustomList<T> a, CustomList<T> b)
+        {
+            if (a == null || b == null)
+            {
+                throw new ArgumentNullException();
+            }
+            var result = a;
+            for (var i = 0; i < b.Count; i++)
+            {
+                result.Remove(b[i]);
+            }
+            return result;
+
+        }
     }
 }
+
