@@ -1,0 +1,234 @@
+CustomList<T> + operator
+Namespace:
+CustomListUnitTestStarter
+Adds one CustomList instance to another.
+
+Syntax
+result = listToBeAddedTo + listToBeAdded
+Parameters 
+listToBeAddedTo 
+CustomList<T>
+The list that will have values added to it.
+listToBeAdded 
+CustomList<T>
+The list containing items that will be added to the first list.
+
+Returns 
+CustomList<T>
+List of all the items in listToBeAdded and listToBeAddedTo.
+
+Examples
+
+//Here we will add two lists together.
+
+CustomList<int> FirstList = new CustomList<int>();
+CustomList<int> SecondList = new CustomList<int>();
+          
+FirstList.Add(1);
+FirstList.Add(2);
+FirstList.Add(3);
+SecondList.Add(4);
+SecondList.Add(4);
+var resultlist = FirstList + SecondList;
+foreach (var item in resultslist)
+{
+    Console.WriteLine(item);
+}
+//output: " 12344"  
+
+//Here we will add one list to an empty list.
+
+CustomList<int> FirstList = new CustomList<int>();
+CustomList<int> SecondList = new CustomList<int>();
+
+SecondList.Add(4);
+SecondList.Add(4);
+var resultlist = FirstList + SecondList;
+foreach (var item in resultslist)
+{
+    Console.WriteLine(item);
+}
+//output: "44"         
+
+CustomList<T> + operator
+Namespace:
+CustomListUnitTestStarter
+Adds one CustomList instance to another.
+
+Syntax
+result = listToBeAddedTo + listToBeAdded
+Parameters 
+listToBeAddedTo 
+CustomList<T>
+The list that will have values added to it.
+listToBeAdded 
+CustomList<T>
+The list containing items that will be added to the first list.
+
+Returns 
+CustomList<T>
+List of all the items in listToBeAdded and listToBeAddedTo.
+
+Examples
+
+//Here we will add two lists together.
+
+CustomList<int> FirstList = new CustomList<int>();
+CustomList<int> SecondList = new CustomList<int>();
+          
+FirstList.Add(1);
+FirstList.Add(2);
+FirstList.Add(3);
+SecondList.Add(4);
+SecondList.Add(4);
+var resultlist = FirstList + SecondList;
+foreach (var item in resultslist)
+{
+    Console.WriteLine(item);
+}
+//output: " 12344"  
+
+//Here we will add one list to an empty list.
+
+CustomList<int> FirstList = new CustomList<int>();
+CustomList<int> SecondList = new CustomList<int>();
+
+SecondList.Add(4);
+SecondList.Add(4);
+var resultlist = FirstList + SecondList;
+foreach (var item in resultslist)
+{
+    Console.WriteLine(item);
+}
+//output: "44"         
+
+CustomList<T> + operator
+Namespace:
+CustomListUnitTestStarter
+Adds one CustomList instance to another.
+
+Syntax
+result = listToBeAddedTo + listToBeAdded
+Parameters 
+listToBeAddedTo 
+CustomList<T>
+The list that will have values added to it.
+listToBeAdded 
+CustomList<T>
+The list containing items that will be added to the first list.
+
+Returns 
+CustomList<T>
+List of all the items in listToBeAdded and listToBeAddedTo.
+
+Examples
+
+//Here we will add two lists together.
+
+CustomList<int> FirstList = new CustomList<int>();
+CustomList<int> SecondList = new CustomList<int>();
+          
+FirstList.Add(1);
+FirstList.Add(2);
+FirstList.Add(3);
+SecondList.Add(4);
+SecondList.Add(4);
+var resultlist = FirstList + SecondList;
+foreach (var item in resultslist)
+{
+    Console.WriteLine(item);
+}
+//output: " 12344"  
+
+//Here we will add one list to an empty list.
+
+CustomList<int> FirstList = new CustomList<int>();
+CustomList<int> SecondList = new CustomList<int>();
+
+SecondList.Add(4);
+SecondList.Add(4);
+var resultlist = FirstList + SecondList;
+foreach (var item in resultslist)
+{
+    Console.WriteLine(item);
+}
+//output: "44"         
+
+===============================================================================================
+     
+CustomList<T> - operator
+Namespace:
+CustomListUnitTestStarter
+Removes items in one CustomList instance from another.
+
+Syntax
+result = listToBeSubtractedFrom + listToBeSubtracted
+Parameters 
+listToBeSubtractedFrom 
+CustomList<T>
+The list that will have values removed from it.
+listToBeSubtracted 
+CustomList<T>
+The list containing items that will be removed from the first list.
+
+Returns 
+CustomList<T>
+List of all the items in listToBeStractedFrom with items from listToBeSubtracted removed.
+
+Examples
+
+//Here we will subtract one list from another.
+
+CustomList<int> FirstList = new CustomList<int>();
+CustomList<int> SecondList = new CustomList<int>();
+          
+FirstList.Add(1);
+FirstList.Add(2);
+FirstList.Add(3);
+SecondList.Add(2);
+SecondList.Add(3);
+var resultlist = FirstList - SecondList;
+foreach (var item in resultslist)
+{
+    Console.WriteLine(item);
+}
+//output: " 1"  
+
+//Here subtract an empty list from a list.
+
+CustomList<int> FirstList = new CustomList<int>();
+CustomList<int> SecondList = new CustomList<int>();
+
+FirstList.Add(1);
+FirstList.Add(2);
+FirstList.Add(3);
+var resultlist = FirstList - SecondList;
+foreach (var item in resultslist)
+{
+    Console.WriteLine(item);
+}
+//output: "123"         
+
+//Here we will subtract one list from another with duplicate matches.
+
+CustomList<int> FirstList = new CustomList<int>();
+CustomList<int> SecondList = new CustomList<int>();
+          
+FirstList.Add(3);
+FirstList.Add(3);
+FirstList.Add(3);
+SecondList.Add(3);
+SecondList.Add(3);
+var resultlist = FirstList - SecondList;
+foreach (var item in resultslist)
+{
+    Console.WriteLine(item);
+}
+//output: " 3"  
+
+
+     
+     
+
+     
+     
