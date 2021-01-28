@@ -11,6 +11,28 @@ namespace CustomListTests
     [TestClass]
     public class CustomListUnitTests
     {
+        #region addmethodtests
+        [TestMethod]
+        public void Add_AddFourStrings_CapacityDoublesWhenReached()
+        {
+            //Arrange 
+            CustomList<int> TestList = new CustomList<int>();
+            int ExpectedCapcity = 8;
+            int actual;
+
+            //Act
+            TestList.Add(1);
+            TestList.Add(2);
+            TestList.Add(3);
+            TestList.Add(4);
+            TestList.Add(4);
+            actual = TestList.Capacity;
+
+            //Assert
+            Assert.AreEqual(actual, ExpectedCapcity);
+
+        }
+
         [TestMethod]
         public void Add_AddItemToEmptyList_ItemGoesToIndexZero()
         {
@@ -145,7 +167,7 @@ namespace CustomListTests
             Assert.AreEqual(actual, FifthItem);
 
 
-        }                       //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
+        }   //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
         [TestMethod]
         public void Add_AddFiveItems_ThirdItemAtSecondIndex()
         {
@@ -175,6 +197,8 @@ namespace CustomListTests
 
             //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
         }
+        #endregion
+        #region removemethodtests
         [TestMethod]
         public void Remove_RemoveOneItemFromList_CountGoesDownByOne()
         {
@@ -288,6 +312,7 @@ namespace CustomListTests
         }
 
 
+
         //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
         [TestMethod]
         public void Remove_RemoveNonexsistentString_CountStaysTheSame()
@@ -308,28 +333,83 @@ namespace CustomListTests
             //Assert
             Assert.AreEqual(actual, expected);
         }
-
+        #endregion 
         //MethodBeingTested_WhatWeAreDoingInsideThatMethod_WhatWeExpectTheResultToBe
 
+       
+
         [TestMethod]
-        public void Add_AddFourStrings_CapacityDoublesWhenReached()
+        public void ToString_OneItemInList_ReturnsStringOfOneItem()
         {
             //Arrange 
             CustomList<int> TestList = new CustomList<int>();
-            int ExpectedCapcity = 8;
-            int actual;
+            string ExpectedResult = "1";
+            string actual;
+
+            //Act
+            TestList.Add(1);
+            actual = TestList.ToString();
+
+            //Assert
+            Assert.AreEqual(actual, ExpectedResult);
+
+        }
+
+        [TestMethod]
+        public void ToString_MultipleItemsInList_ReturnsStringOfAllItems()
+        {
+            //Arrange 
+            CustomList<int> TestList = new CustomList<int>();
+            string ExpectedResult = "123";
+            string actual;
 
             //Act
             TestList.Add(1);
             TestList.Add(2);
             TestList.Add(3);
-            TestList.Add(4);
-            TestList.Add(4);
-            actual = TestList.Capacity;
+            actual = TestList.ToString();
 
             //Assert
-            Assert.AreEqual(actual, ExpectedCapcity);
+            Assert.AreEqual(actual, ExpectedResult);
 
         }
-    }
+
+        [TestMethod]
+        public void ToString_EmptyList_ReturnsEmptyString()
+        {
+            //Arrange 
+            CustomList<int> TestList = new CustomList<int>();
+            string ExpectedResults = "";
+            string actual;
+
+            //Act
+            
+            
+            actual = TestList.ToString();
+
+            //Assert
+            Assert.AreEqual(actual, ExpectedResults);
+
+        }
+        [TestMethod]
+        public void ToString_MultipleStringItemsInList_ReturnsStringOfAllItems()
+        {
+            //Arrange 
+            CustomList<string> TestList = new CustomList<string>();
+            string ExpectedResult = "123";
+            string actual;
+
+            //Act
+            TestList.Add("1");
+            TestList.Add("2");
+            TestList.Add("3");
+            actual = TestList.ToString();
+
+            //Assert
+            Assert.AreEqual(actual, ExpectedResult);
+
+        }
+
+    } 
+  
 }
