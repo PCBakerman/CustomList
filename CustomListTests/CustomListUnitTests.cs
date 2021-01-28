@@ -645,7 +645,119 @@ namespace CustomListTests
             Assert.AreEqual(actual, Expected);
 
         }
-        #endregion 
+        #endregion
+        #region ZipMethodTests
+        [TestMethod]
+        public void Zip_ListsWithContent_CountEqualsSumOfBothLists()
+        {
+            //Arrange 
+            CustomList<int> FirstList = new CustomList<int>();
+            CustomList<int> SecondList = new CustomList<int>();
+            int ExpectedCount = 5;
+            int actual;
+
+            //Act
+            FirstList.Add(1);
+            FirstList.Add(2);
+            FirstList.Add(3);
+            SecondList.Add(4);
+            SecondList.Add(4);
+            FirstList.Zip(SecondList);
+            actual = FirstList.Count;
+
+            //Assert
+            Assert.AreEqual(actual, ExpectedCount);
+
+        }
+
+        [TestMethod]
+        public void Zip_ListsWithContent_ItemsAlternateBetweenLists()
+        {
+            //Arrange 
+            CustomList<int> FirstList = new CustomList<int>();
+            CustomList<int> SecondList = new CustomList<int>();
+            
+
+            //Act
+            FirstList.Add(1);
+            FirstList.Add(2);
+            FirstList.Add(3);
+            SecondList.Add(4);
+            SecondList.Add(4);
+            FirstList.Zip(SecondList);
+            
+
+            //Assert
+            Assert.AreEqual(FirstList[0], 1);
+            Assert.AreEqual(FirstList[1], 4);
+            Assert.AreEqual(FirstList[2], 2); 
+            Assert.AreEqual(FirstList[3], 4); 
+            Assert.AreEqual(FirstList[4], 3);
+            
+
+
+        }
+        [TestMethod]
+        public void Zip_ListsWithContent_CountEqualsSumOfBothLists()
+        {
+            //Arrange 
+            CustomList<int> FirstList = new CustomList<int>();
+            CustomList<int> SecondList = new CustomList<int>();
+            int ExpectedCount = 5;
+            int actual;
+
+            //Act
+            FirstList.Add(1);
+            FirstList.Add(2);
+            FirstList.Add(3);
+            SecondList.Add(4);
+            SecondList.Add(4);
+            FirstList.Zip(SecondList);
+            actual = FirstList.Count;
+
+            //Assert
+            Assert.AreEqual(actual, ExpectedCount);
+
+        }
+        [TestMethod]
+        public void Zip_OneEmptyList_ResultIsFirstList()
+        {
+            //Arrange 
+            CustomList<int> FirstList = new CustomList<int>();
+            CustomList<int> SecondList = new CustomList<int>();
+           
+
+            //Act
+            FirstList.Add(1);
+            FirstList.Add(2);
+            FirstList.Add(3);
+            FirstList.Zip(SecondList);
+
+
+            //Assert
+            Assert.AreEqual(FirstList[0], 1);
+            Assert.AreEqual(FirstList[1], 2);
+            Assert.AreEqual(FirstList[2], 3);
+
+        }
+        [TestMethod]
+        public void Zip_TwoEmptyList_ResultIsEmptyList()
+        {
+            //Arrange 
+            CustomList<int> FirstList = new CustomList<int>();
+            CustomList<int> SecondList = new CustomList<int>();
+            int Expected = 0;
+            int actual;
+
+            //Act
+            FirstList.Zip(SecondList);
+            actual = FirstList.Count;
+
+            //Assert
+            Assert.AreEqual(Expected, actual);
+        }
+        #endregion
+
     }
 
 }
