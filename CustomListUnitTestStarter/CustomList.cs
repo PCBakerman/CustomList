@@ -99,5 +99,14 @@ namespace CustomListUnitTestStarter
                  Count--;  
             }
         }
+        public override string ToString()
+        {
+            var result = string.Empty;
+            for (var i = 0; i < Count; i++)
+            {
+               result += items[i].ToString();
+            }
+            return result;
+        }
     }
 }
