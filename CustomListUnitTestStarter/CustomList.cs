@@ -13,7 +13,7 @@ namespace CustomListUnitTestStarter
 
         private T[] items;
 
-        // Indexer with only a get accessor with the expression-bodied definition:(From https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/indexers/using-indexers)
+        // Indexer with only a get accessors with the expression-bodied definition:(From https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/indexers/using-indexers)
         public T this[int index] => FindItemByIndex(index);
         public int Capacity { get { return items.Length; } }
         public int Count { get; private set; }
@@ -42,7 +42,7 @@ namespace CustomListUnitTestStarter
         {
             
             // Check if index is within our array.
-            if (index >= Count)
+            if (index < 0 || index >= Count)
             {
                 // Index is bigger than our items in the array.
                 throw new ArgumentOutOfRangeException(
@@ -51,6 +51,7 @@ namespace CustomListUnitTestStarter
             }
              //Return item at index.
              return items[index];
+            
 
 
         }
@@ -60,7 +61,7 @@ namespace CustomListUnitTestStarter
         /// <paramref name="item"/>
         /// Removes an item
         /// Removes only 1st instances of passing item
-        /// Does nothing if item doesn't exsist
+        /// Does nothing if item doesn't exist
         /// If an item removed decrease count by -1 $$
         /// If an item is removed, shift all other items down one
         /// </summary>
