@@ -320,7 +320,7 @@ namespace CustomListTests
             //Arrange
             CustomList<string> customList = new CustomList<string>();
 
-            string expected = ("400");
+            int expected = 3;
             int actual;
 
             //Act
